@@ -57,7 +57,16 @@ mongoose
   })
   .then((response) => {
     console.log("estupendito", response.duration);
+
+    return Recipe.deleteOne({ title: "Carrot Cake" });
+  })
+  .then((response) => {
+    console.log("No he dejado ni las migas.");
   })
   .catch((error) => {
     console.error("Error connecting to the database", error);
+  })
+  .finally(() => {
+    mongoose.connection.close();
+    console.log("Apañao'.");
   });
