@@ -48,6 +48,15 @@ mongoose
     response.forEach((recipe) => {
       console.log(recipe.title);
     });
+
+    return Recipe.findOneAndUpdate(
+      { title: "Rigatoni alla Genovese" },
+      { duration: 100 },
+      { new: true }
+    );
+  })
+  .then((response) => {
+    console.log("estupendito", response.duration);
   })
   .catch((error) => {
     console.error("Error connecting to the database", error);
